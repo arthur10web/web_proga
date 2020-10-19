@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>laba 2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.."></script>
+
+
+
+<style>
+p{
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+background-color:Wheat
+}
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+width:100%;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: rgb(216, 181, 181);
+}
+td {
+background: #70b8ca;
+}
+th{
+background-color: rgb(47, 196, 255);
+}
+</style>
+</head>
+<body>
+<table class="table table-striped">
+<tr class="bg-info">
+<th>Name</th>
+<th>Surname</th>
+<th>Age</th>
+<th>Average Mark</th>
+</tr>
+
+<tbody id="myTable">
+
+</tbody>
+</table>
+
+</body>
+<script>
+var myArray = [
+{'name':'Michael','surname':'Svit', 'age':'16', 'average_mark':'8.2'},
+{'name':'Mila', 'surname':'Nemila','age':'15', 'average_mark':'10'},
+{'name':'Paul', 'surname':'DedInside','age':'16', 'average_mark':'3.1'},
+{'name':'Dennis', 'surname':'Priemnii','age':'16', 'average_mark':'6.7'},
+{'name':'Tim', 'surname':'A','age':'17', 'average_mark':'8.4'},
+{'name':'Erik', 'surname':'Davidyich','age':'16', 'average_mark':'7.5'},
+]
+
+buildTable(myArray)
+
+
+
+function buildTable(data){
+var table = document.getElementById('myTable')
+
+for (var i = 0; i < data.length; i++){
+var row = `<tr>
+<td>${data[i].name}</td>
+<td>${data[i].surname}</td>
+<td>${data[i].age}</td>
+<td>${data[i].average_mark}</td>
+</tr>`
+table.innerHTML += row
+
+
+}
+}
+function Sum(array)
+{
+var sum=0;
+for(var i=0;i<array.length;i++){
+sum+=+array[i].average_mark
+}
+return +sum/array.length;
+}
+let a = Sum(myArray);
+document.body.insertAdjacentHTML('beforeend',`<p> Средняя оценка:${a.toFixed(2)}</p>`);
+</script>
+</html>
