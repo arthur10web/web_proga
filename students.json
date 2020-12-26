@@ -1,0 +1,39 @@
+﻿[
+	
+	
+{
+		
+			"name": "Arthur",
+		
+			"surname": "Leuski",
+		
+			"age": "19",
+       
+ 			"averageball" : "7"
+	},
+	
+{
+		
+			"name": "NeArthur",
+		
+			"surname": "NeLeuski",
+		
+			"age": "19",
+       
+ 			"averageball" : "7.5"
+	},
+	
+{
+		
+			"name": "Arr",
+		
+			"surname": "Leski",
+		
+			"age": "20",
+       
+ 			"averageball" : "5.4"
+	},
+	
+}
+
+]
