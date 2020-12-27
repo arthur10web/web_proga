@@ -1,26 +1,19 @@
 <html>
 	<head>
-		<style type="text/css">
-			table {
-				  border: 4px solid black;
-				background: gray;
-			}
-	
-			
-		</style>
+		
 	</head>
 	<body>
-				<button onclick="getJson()">таблица</button>
+				<button onclick="getFile()">Таблица</button>
 		<br><br>
-		<input type="text" id="name-e" placeholder="u'r name">
-		<input type="text" id="surname-e" placeholder="u'r  surname">
-		<input type="number" id="age-e" placeholder="u'r  age">
-		<input type="number" id="mark-e" placeholder="u'r  mark">
-		<button onclick="addStudent()">добавить студента</button>
+		<input type="text" id="nameD" placeholder="u'r name">
+		<input type="text" id="surnameD" placeholder="u'r surname">
+		<input type="number" id="ageD" placeholder="u'r your age">
+		<input type="number" id="markD" placeholder="u'r your mark">
+		<button onclick="addStud()">студента добавить</button>
 		<br><br>
 
-		<p id="average">средняя оценка </p>
-		<button onclick="getAverage()">НАЖМИ СЮДА</button>
+		<p id="average">средняя оценка</p>
+		<button onclick="getAverage()">жми сюда</button>
 
 
 	</body>
@@ -31,7 +24,7 @@
 <script>
 	count = 0;
 	var arr = [];
-	class Studs {
+	class Stud {
 	  		constructor(name, surname, age, mark) {
 	    	this.name = name;
 	    	this.surname=surname;
@@ -75,7 +68,7 @@
 	$('body').prepend(table);
 
 
-	function getJson(){
+	function getFile(){
 		$.ajax({
 		    url:"https://run.mocky.io/v3/770c8300-cca0-4635-8f10-f96bb4f4e055",
 		    type:"GET",
@@ -83,22 +76,24 @@
 		    dataType: "json",
 		    success: function(json) {
                 for (i in json) {
-                	var studs = new Studs(json[i].name, json[i].surname, json[i].age, json[i].mark)
-					studs.addToTable('table-body');
-					arr.push(studs);
+                	var student = new Stud(json[i].name, json[i].surname, json[i].age, json[i].mark)
+					student.addToTable('table-body');
+					arr.push(student);
                 }
 		    },
-		  
+		    error: function(e) {
+		       console.log(e);
+		    }
 		});
 	}
 
-	function addStudent(){
-		var inputName = $('#name-e').val();
-		var inputSurname = $('#surname-e').val();
-		var inputAge = $('#age-e').val();
-		var inputMark = $('#mark-e').val();
+	function addStud(){
+		var inputName = $('#nameD').val();
+		var inputSurname = $('#surnameD').val();
+		var inputAge = $('#ageD').val();
+		var inputMark = $('#markD').val();
 
-		var studs = new Studs(inputName, inputSurname, inputAge, inputMark);
+		var student = new Stud(inputName, inputSurname, inputAge, inputMark);
 
 		arr.push(student);
 	  		arr[arr.length-1].addToTable('table-body');
@@ -114,4 +109,3 @@
 	  	$('#average').html("Average mark is " + average);
   	}
 </script>
-
